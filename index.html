@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>Dashboard Entrance</title>
+  <link rel="icon" href="logo.png" type="image/png">
   <style>
     body {
       margin: 0;
@@ -17,28 +18,24 @@
     }
 
     .logo {
-      width: 80px;
+      width: 130px;
       position: absolute;
-      top: 30px;
-      left: 30px;
-      filter: drop-shadow(0 0 8px #00ffe7);
+      top: 25px;
+      left: 25px;
+      filter: drop-shadow(0 0 10px #00ffe7);
       transition: transform 0.3s ease;
     }
+
     .logo:hover {
       transform: scale(1.1);
     }
 
     h1 {
       color: #00ffe7;
-      font-size: 2.5em;
-      text-shadow: 0 0 10px #00ffe7, 0 0 20px #00bfff;
-      animation: glowText 2s ease-in-out;
+      font-size: 2.8em;
+      text-shadow: 0 0 12px #00ffe7, 0 0 24px #00bfff;
+      animation: textIn 1.8s ease-in-out;
       z-index: 1;
-    }
-
-    @keyframes glowText {
-      0% { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
     }
 
     .overlay {
@@ -46,12 +43,17 @@
       top: 0; left: 0;
       width: 100vw;
       height: 100vh;
-      background: radial-gradient(circle, rgba(0,255,255,0.2), transparent 70%);
-      animation: glowFlash 1.2s ease-out forwards;
+      background: radial-gradient(circle, rgba(0,255,255,0.25), transparent 70%);
+      animation: flashGlow 1.4s ease-out forwards;
       pointer-events: none;
     }
 
-    @keyframes glowFlash {
+    @keyframes textIn {
+      0% { opacity: 0; transform: translateY(25px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes flashGlow {
       0% { opacity: 0; transform: scale(1); }
       50% { opacity: 0.8; transform: scale(1.05); }
       100% { opacity: 0; transform: scale(1); }
@@ -59,15 +61,15 @@
   </style>
 </head>
 <body>
-  <audio id="sound" src="woosh.mp3" preload="auto"></audio>
+  <audio id="woosh" src="woosh.mp3" preload="auto"></audio>
   <img src="logo.png" alt="Site Logo" class="logo" />
   <div class="overlay"></div>
   <h1>Welcome to Trade With Tanvir Signal Generator</h1>
 
   <script>
-    const woosh = document.getElementById("sound");
-    woosh.volume = 0.6;
-    woosh.play();
+    const sound = document.getElementById("woosh");
+    sound.volume = 0.5;
+    sound.play();
 
     setTimeout(() => {
       window.location.href = "https://twtsignalsgenerator.github.io/tradewithtanvirlogin/"; // তোমার redirect পেজের নাম
