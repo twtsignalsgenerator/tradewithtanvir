@@ -1,62 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
   <meta charset="UTF-8" />
-  <title>Dashboard Transition</title>
+  <title>Dashboard Entrance</title>
   <style>
     body {
       margin: 0;
-      height: 100vh;
-      background-color: #0a0f1a;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
+      background-color: #0d1117;
       font-family: 'Segoe UI', sans-serif;
-    }
-
-    .overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       height: 100vh;
-      background: radial-gradient(circle, rgba(0,255,255,0.4), transparent 80%);
-      animation: glow 1.6s ease forwards;
-      z-index: 100;
+      overflow: hidden;
     }
 
-    @keyframes glow {
-      0% { opacity: 0; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.05); }
-      100% { opacity: 0; transform: scale(1); }
+    .logo {
+      width: 120px;
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      filter: drop-shadow(0 0 8px #00ffe7);
+      transition: transform 0.3s ease;
+    }
+    .logo:hover {
+      transform: scale(1.1);
     }
 
     h1 {
       color: #00ffe7;
-      text-shadow: 0 0 10px #00ffe7, 0 0 20px #00bfff;
       font-size: 2.5em;
-      animation: textFade 2s ease-in-out;
-      z-index: 101;
+      text-shadow: 0 0 10px #00ffe7, 0 0 20px #00bfff;
+      animation: glowText 2s ease-in-out;
+      z-index: 1;
     }
 
-    @keyframes textFade {
-      0% { opacity: 0; transform: translateY(15px); }
+    @keyframes glowText {
+      0% { opacity: 0; transform: translateY(20px); }
       100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: radial-gradient(circle, rgba(0,255,255,0.2), transparent 70%);
+      animation: glowFlash 1.2s ease-out forwards;
+      pointer-events: none;
+    }
+
+    @keyframes glowFlash {
+      0% { opacity: 0; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.05); }
+      100% { opacity: 0; transform: scale(1); }
     }
   </style>
 </head>
 <body>
-  <audio id="wooshSound" src="woosh.mp3" preload="auto"></audio>
+  <audio id="sound" src="woosh.mp3" preload="auto"></audio>
+  <img src="logo.png" alt="Site Logo" class="logo" />
   <div class="overlay"></div>
   <h1>Welcome to Trade With Tanvir Signal Generator</h1>
 
   <script>
-    const woosh = document.getElementById("wooshSound");
-    woosh.volume = 0.5;
+    const woosh = document.getElementById("sound");
+    woosh.volume = 0.6;
     woosh.play();
 
     setTimeout(() => {
-      window.location.href = "https://twtsignalsgenerator.github.io/tradewithtanvirlogin/"; // তোমার পছন্দের পেজের লিংক দিন
+      window.location.href = "Signal-Generator-Home.html"; // তোমার redirect পেজের নাম
     }, 1800);
   </script>
 </body>
